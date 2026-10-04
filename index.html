@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 de Octubre</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+      user-select: none;
+      -webkit-user-select: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Press Start 2P', monospace;
+      margin: 0;
+      padding: 0;
+      background: #0d0617;
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .pixel-btn {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      line-height: 1.2;
+      padding: 9px 14px;
+      border: 3px solid #090312;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: transform 0.08s ease, filter 0.12s ease;
+      position: relative;
+    }
+
+    .pixel-btn-pink {
+      background: #ec4899;
+      color: #fff;
+      box-shadow: inset -2px -2px 0px 0px #9d174d, inset 2px 2px 0px 0px #fbcfe8, 2px 2px 0px 0px #090312;
+    }
+
+    .pixel-btn-gold {
+      background: #f59e0b;
+      color: #1a0b2e;
+      box-shadow: inset -2px -2px 0px 0px #b45309, inset 2px 2px 0px 0px #fef3c7, 2px 2px 0px 0px #090312;
+    }
+
+    .pixel-btn-green {
+      background: #10b981;
+      color: #062b1e;
+      box-shadow: inset -2px -2px 0px 0px #047857, inset 2px 2px 0px 0px #a7f3d0, 2px 2px 0px 0px #090312;
+    }
+
+    .pixel-btn-purple {
+      background: #7c3aed;
+      color: #fff;
+      box-shadow: inset -2px -2px 0px 0px #4c1d95, inset 2px 2px 0px 0px #ddd6fe, 2px 2px 0px 0px #090312;
+    }
+
+    .pixel-btn-mode {
+      background: #23123d;
+      color: #fce7f3;
+      border: 2px solid #fcd34d;
+      font-size: 8px;
+      padding: 6px 10px;
+      box-shadow: inset -2px -2px 0px 0px #130624, inset 2px 2px 0px 0px #582688, 2px 2px 0px 0px #000;
+    }
+
+    .pixel-btn-mode.active-mode {
+      background: #fcd34d;
+      color: #240d3a;
+      border-color: #ffffff;
+      box-shadow: inset -2px -2px 0px 0px #b45309, inset 2px 2px 0px 0px #fffbeb, 2px 2px 0px 0px #000;
+    }
+
+    .pixel-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: inset 2px 2px 0px 0px #220b3b;
+    }
+
+    .pixel-btn:hover {
+      filter: brightness(1.12);
+    }
+
+    .retro-box {
+      border: 4px solid #fcd34d;
+      box-shadow: 
+        0 -4px 0 0 #3b1859,
+        0 4px 0 0 #3b1859,
+        -4px 0 0 0 #3b1859,
+        4px 0 0 0 #3b1859,
+        0 10px 28px rgba(0, 0, 0, 0.75);
+    }
+
+    @keyframes floatHeartKey {
+      0% { transform: translateY(0) scale(0.8); opacity: 1; }
+      50% { transform: translateY(-35px) scale(1.15); opacity: 0.95; }
+      100% { transform: translateY(-70px) scale(0.9); opacity: 0; }
+    }
+
+    .floating-heart {
+      position: absolute;
+      pointer-events: none;
+      animation: floatHeartKey 1.25s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+      z-index: 50;
+    }
+
+    .noodle-anim {
+      animation: compressToNoodle 1.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+      transform-origin: center center;
+    }
+
+    @keyframes compressToNoodle {
+      0% { transform: scale(1, 1); filter: brightness(1); }
+      45% { transform: scale(1.04, 0.015); filter: brightness(2.6) contrast(2); }
+      75% { transform: scale(0.12, 0.01); filter: brightness(4) drop-shadow(0 0 12px #c084fc); opacity: 1; }
+      100% { transform: scale(0, 0); opacity: 0; }
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.25); }
+      55% { transform: scale(0.95); }
+      72% { transform: scale(1.15); }
+    }
+
+    .pulsing-heart {
+      animation: heartBeat 0.85s infinite ease-in-out;
+    }
+
+    .cursor-blink::after {
+      content: '▋';
+      animation: blink 0.75s infinite;
+      color: #facc15;
+      margin-left: 3px;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    .star-sparkle {
+      position: absolute;
+      background: #ffffff;
+      animation: starTwinkle 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center p-2 sm:p-4 min-h-screen">
+
+  <section id="sceneKittens" class="w-full max-w-xl flex flex-col items-center transition-opacity duration-500 my-auto">
+    
+    <!-- Floating Top Bar for Environments (Día / Ocaso / Noche) -->
+    <div class="mb-3 w-full flex items-center justify-between flex-wrap gap-2 px-1">
+      <div class="bg-[#240e3b] border-2 border-[#fcd34d] px-3 py-1.5 rounded shadow">
+        <span class="text-[9px] text-[#fde047] tracking-wider"> Gatitos - US</span>
+      </div>
+
+      <div class="flex items-center gap-1.5 ml-auto">
+        <button id="btnModeDia" class="pixel-btn pixel-btn-mode">
+          <span>☀️ Día</span>
+        </button>
+        <button id="btnModeOcaso" class="pixel-btn pixel-btn-mode active-mode">
+          <span>🌇 Ocaso</span>
+        </button>
+        <button id="btnModeNoche" class="pixel-btn pixel-btn-mode">
+          <span>🌙 Noche</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Canvas Wrapper with Noodle compression target -->
+    <div id="kittenContainer" class="relative retro-box bg-black p-1 w-full max-w-lg overflow-hidden">
+      <canvas id="kittenCanvas" class="w-full h-auto block cursor-pointer" style="aspect-ratio: 16/11;"></canvas>
+      <div id="heartsOverlay" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+    </div>
+
+    <!-- Action Buttons for Scene 1 -->
+    <div class="mt-4 flex flex-wrap items-center justify-center gap-3 w-full">
+      <button id="btnPet" class="pixel-btn pixel-btn-pink">
+        <svg width="12" height="12" viewBox="0 0 10 10" style="shape-rendering: crisp-edges;">
+          <path d="M2,2 h2 v2 h-2 z M6,2 h2 v2 h-2 z M1,3 h8 v3 h-8 z M2,6 h6 v2 h-6 z M3,8 h4 v1 h-4 z M4,9 h2 v1 h-2 z" fill="#fff"/>
+        </svg>
+        <span>Acariciar</span>
+      </button>
+
+      <button id="btnContinue" class="pixel-btn pixel-btn-gold">
+        <span>Continuar</span>
+        <svg width="10" height="10" viewBox="0 0 8 8" style="shape-rendering: crisp-edges;">
+          <path d="M1,1 h2 v1 h-2 z M3,2 h2 v1 h-2 z M5,3 h2 v2 h-2 z M3,5 h2 v1 h-2 z M1,6 h2 v1 h-2 z" fill="#1a0b2e"/>
+        </svg>
+      </button>
+    </div>
+
+    <p class="mt-2 text-[8px] text-[#fbcfe8]/70 text-center">
+      Toca el pasto para florecer o acaricia a los gatitos
+    </p>
+  </section>
+
+  <div id="transOverlay" class="fixed inset-0 z-50 bg-black hidden flex-col items-center justify-center pointer-events-auto overflow-hidden">
+    <!-- Starfield particles inside black void -->
+    <div id="starsVoid" class="absolute inset-0 pointer-events-none"></div>
+
+    <!-- 1. Neon Purple EKG Hospital Monitor Canvas tracing 'K' and traveling into center -->
+    <div id="ekgContainer" class="hidden flex-col items-center justify-center relative z-10 w-full h-full">
+      <canvas id="ekgCanvas" class="block w-full h-full max-w-2xl max-h-[400px]"></canvas>
+    </div>
+
+    <!-- 2. Pulsing Red Heart in Darkness shown only after EKG reaches center + 3s pause -->
+    <div id="heartCenter" class="hidden flex-col items-center justify-center relative z-20">
+      <div id="beatingHeartSvg" class="pulsing-heart w-20 h-20 sm:w-28 sm:h-28 text-[#ff2a6d]">
+        <svg viewBox="0 0 16 16" width="100%" height="100%" style="shape-rendering: crisp-edges;">
+          <rect x="3" y="1" width="4" height="2" fill="#ff2a6d"/>
+          <rect x="9" y="1" width="4" height="2" fill="#ff2a6d"/>
+          <rect x="2" y="3" width="6" height="2" fill="#ff2a6d"/>
+          <rect x="8" y="3" width="6" height="2" fill="#ff2a6d"/>
+          <rect x="1" y="5" width="14" height="3" fill="#ff2a6d"/>
+          <rect x="2" y="8" width="12" height="2" fill="#ff2a6d"/>
+          <rect x="3" y="10" width="10" height="2" fill="#ff2a6d"/>
+          <rect x="5" y="12" width="6" height="2" fill="#ff2a6d"/>
+          <rect x="7" y="14" width="2" height="2" fill="#ff2a6d"/>
+          <rect x="4" y="3" width="2" height="2" fill="#ff8da9"/>
+          <rect x="3" y="5" width="2" height="2" fill="#ff8da9"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Container for dispersing multiplying mini hearts that create the border -->
+    <div id="flyingHeartsContainer" class="absolute inset-0 pointer-events-none z-30"></div>
+  </div>
+
+  <section id="sceneInvite" class="hidden w-full max-w-4xl mx-auto my-auto flex-col items-center justify-center p-2 sm:p-4">
+    
+    <div class="w-full retro-box bg-[#191129] p-4 sm:p-6 rounded-lg">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10">
+        
+        <!-- LEFT: PIXEL HEART PHOTO FRAME (Fixed image, no file upload) -->
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="text-[9px] text-[#fcd34d] mb-2 tracking-wider text-center">Obra de arte</div>
+          
+          <div class="relative p-5 bg-[#25153d] border-2 border-[#582b7b] rounded shadow-2xl">
+            <!-- Multiplying pixel hearts frame -->
+            <div id="heartBorderWrapper" class="absolute inset-0 pointer-events-none"></div>
+
+            <!-- Fixed photo container -->
+            <div class="relative w-48 h-56 sm:w-56 sm:h-64 bg-[#11091e] overflow-hidden border-2 border-[#ff3366] flex items-center justify-center">
+              <img id="userPhoto" 
+                   src="/imag.jpeg" 
+                   alt="Foto de Cumpleaños" 
+                   class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: TYPEWRITER CASCADE INVITATION -->
+        <div class="flex-1 w-full flex flex-col justify-center">
+          <div id="typewriterArea" class="flex flex-col gap-3 text-left text-[9px] sm:text-[10px] leading-relaxed text-[#f8fafc]">
+            
+            <!-- Row 1: Pixel Art Cake + Feliz Cumpleaños (Side by side on the same line) -->
+            <div id="rowCakeHappy" class="hidden flex-row items-center gap-3 min-h-[46px]">
+              <div class="flex-shrink-0 border border-[#ff3366]/40 bg-[#150a24] p-1 rounded shadow">
+                <canvas id="cakeCanvas" width="60" height="40" class="block"></canvas>
+              </div>
+              <div id="lineHappy" class="text-[#fde047] text-xs sm:text-sm font-bold tracking-wider"></div>
+            </div>
+
+            <!-- Row 2: Pixel Art House + Lugar: -->
+            <div id="rowLugar" class="hidden flex-row items-center gap-2.5 min-h-[26px]">
+              <div class="flex-shrink-0 p-0.5 bg-[#1e1333] border border-[#ff8da9]/50 rounded">
+                <canvas id="houseCanvas" width="22" height="22" class="block"></canvas>
+              </div>
+              <div id="lineLugar" class="text-[#ff8da9] font-bold text-[10px] sm:text-xs"></div>
+            </div>
+
+            <!-- Row 3: Corrected Pixel Art Park Illustration -->
+            <div id="parkContainer" class="hidden flex-col items-start gap-1">
+              <div class="border-2 border-[#10b981] p-1 bg-[#091a13] rounded w-full max-w-sm shadow-md">
+                <canvas id="parkCanvas" width="240" height="130" class="w-full h-auto block" style="aspect-ratio: 240/130;"></canvas>
+              </div>
+            </div>
+
+            <!-- Row 4: Pixel Art Location Pin + Dirección text -->
+            <div id="rowDireccion" class="hidden flex-row items-center gap-2.5 min-h-[22px]">
+              <div class="flex-shrink-0 p-0.5 bg-[#1e1333] border border-[#a7f3d0]/50 rounded">
+                <canvas id="pinCanvas" width="20" height="20" class="block"></canvas>
+              </div>
+              <div id="lineDireccion" class="text-[#a7f3d0]"></div>
+            </div>
+
+            <!-- Row 5: Pixel Art 4-Hand Clock + Dia y Hora: -->
+            <div id="rowHora" class="hidden flex-row items-center gap-2.5 min-h-[26px]">
+              <div class="flex-shrink-0 p-0.5 bg-[#1e1333] border border-[#fbcfe8]/50 rounded">
+                <canvas id="clockCanvas" width="22" height="22" class="block"></canvas>
+              </div>
+              <div id="lineHora" class="text-[#fbcfe8] text-[9px] sm:text-[10px]"></div>
+            </div>
+
+            <!-- Row 6: Interactive Buttons -->
+            <div id="finalActions" class="hidden flex-wrap items-center gap-3 pt-3 border-t border-[#4c1d95]/70">
+              <button id="btnAccept" class="pixel-btn pixel-btn-green">
+                <span>Acepto</span>
+              </button>
+              <button id="btnBack" class="pixel-btn pixel-btn-purple">
+                <span>Volver</span>
+              </button>
+            </div>
+
+            <!-- Row 7: Confirmation Message -->
+            <div id="confirmNotice" class="hidden mt-2 p-3 bg-[#064e3b] border-2 border-[#34d399] rounded text-[#ecfdf5] text-[9px] sm:text-[10px] leading-relaxed shadow-lg">
+              Gracias linda , entonces acordemos la hora y dia , tal vez puedas el lunes, igual escribeme en wasapsito
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-50 hidden"></canvas>
+
+  <script>
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Typewriter mechanical key tick
+    function playKeyTick() {
+      try {
+        const actx = getAudioContext();
+        const osc = actx.createOscillator();
+        const gain = actx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(750 + Math.random() * 320, actx.currentTime);
+        gain.gain.setValueAtTime(0.025, actx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.04);
+        osc.connect(gain);
+        gain.connect(actx.destination);
+        osc.start();
+        osc.stop(actx.currentTime + 0.04);
+      } catch (e) {}
+    }
+
+    // Hospital vital signs monitor beep
+    function playEkgBeep() {
+      try {
+        const actx = getAudioContext();
+        const osc = actx.createOscillator();
+        const gain = actx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(980, actx.currentTime);
+        gain.gain.setValueAtTime(0.08, actx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.12);
+        osc.connect(gain);
+        gain.connect(actx.destination);
+        osc.start();
+        osc.stop(actx.currentTime + 0.12);
+      } catch (e) {}
+    }
+
+    function playPurrSound() {
+      try {
+        const actx = getAudioContext();
+        const now = actx.currentTime;
+        const osc = actx.createOscillator();
+        const gain = actx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(125, now);
+        osc.frequency.exponentialRampToValueAtTime(165, now + 0.15);
+        osc.frequency.exponentialRampToValueAtTime(115, now + 0.35);
+
+        const lfo = actx.createOscillator();
+        const lfoGain = actx.createGain();
+        lfo.type = 'sawtooth';
+        lfo.frequency.value = 25;
+        lfoGain.gain.value = 0.08;
+        lfo.connect(osc.frequency);
+        lfo.start(now);
+        lfo.stop(now + 0.38);
+
+        gain.gain.setValueAtTime(0.01, now);
+        gain.gain.linearRampToValueAtTime(0.14, now + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+
+        osc.connect(gain);
+        gain.connect(actx.destination);
+        osc.start(now);
+        osc.stop(now + 0.38);
+      } catch (e) {}
+    }
+
+    function playWhooshSound() {
+      try {
+        const actx = getAudioContext();
+        const now = actx.currentTime;
+        const osc = actx.createOscillator();
+        const gain = actx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(840, now);
+        osc.frequency.exponentialRampToValueAtTime(70, now + 0.95);
+        gain.gain.setValueAtTime(0.07, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+        osc.connect(gain);
+        gain.connect(actx.destination);
+        osc.start(now);
+        osc.stop(now + 0.95);
+      } catch (e) {}
+    }
+
+    function playHeartbeatSound() {
+      try {
+        const actx = getAudioContext();
+        const now = actx.currentTime;
+        // lub
+        const osc1 = actx.createOscillator();
+        const gain1 = actx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(90, now);
+        osc1.frequency.exponentialRampToValueAtTime(40, now + 0.12);
+        gain1.gain.setValueAtTime(0.25, now);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc1.connect(gain1);
+        gain1.connect(actx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.12);
+        // dub
+        const osc2 = actx.createOscillator();
+        const gain2 = actx.createGain();
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(75, now + 0.16);
+        osc2.frequency.exponentialRampToValueAtTime(35, now + 0.3);
+        gain2.gain.setValueAtTime(0.28, now + 0.16);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc2.connect(gain2);
+        gain2.connect(actx.destination);
+        osc2.start(now + 0.16);
+        osc2.stop(now + 0.3);
+      } catch (e) {}
+    }
+
+    function playCelebrateFanfare() {
+      try {
+        const actx = getAudioContext();
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const now = actx.currentTime + idx * 0.11;
+          const osc = actx.createOscillator();
+          const gain = actx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+          osc.connect(gain);
+          gain.connect(actx.destination);
+          osc.start(now);
+          osc.stop(now + 0.38);
+        });
+      } catch (e) {}
+    }
+
+    const kCanvas = document.getElementById('kittenCanvas');
+    const kCtx = kCanvas.getContext('2d');
+    const heartsOverlay = document.getElementById('heartsOverlay');
+
+    const V_W = 200;
+    const V_H = 140;
+    kCanvas.width = V_W;
+    kCanvas.height = V_H;
+
+    let kTick = 0;
+    let currentMode = 'ocaso';
+
+    const petals = [];
+    for (let i = 0; i < 28; i++) {
+      petals.push({
+        x: Math.random() * V_W,
+        y: Math.random() * V_H,
+        speedX: -0.2 - Math.random() * 0.35,
+        speedY: 0.25 + Math.random() * 0.45,
+        size: Math.random() > 0.4 ? 2 : 1,
+        color: ['#ffb3c1', '#ff85a1', '#fed7aa', '#fef08a'][Math.floor(Math.random() * 4)],
+        wave: Math.random() * Math.PI * 2
+      });
+    }
+
+    const flowers = [
+      { x: 14, y: 120, type: 'tulip', color: '#ff3366', stemH: 15 },
+      { x: 28, y: 124, type: 'sunflower', color: '#facc15', stemH: 18 },
+      { x: 42, y: 122, type: 'daisy', color: '#ffffff', stemH: 13 },
+      { x: 56, y: 126, type: 'rose', color: '#f43f5e', stemH: 12 },
+      { x: 142, y: 124, type: 'rose', color: '#fb7185', stemH: 13 },
+      { x: 156, y: 121, type: 'sunflower', color: '#f59e0b', stemH: 18 },
+      { x: 170, y: 125, type: 'tulip', color: '#f43f5e', stemH: 14 },
+      { x: 184, y: 122, type: 'daisy', color: '#ffffff', stemH: 15 }
+    ];
+
+    function drawKittenScene() {
+      if (currentMode === 'ocaso') {
+        const skyBands = ['#2d1847', '#4b1d56', '#6c215d', '#962b5d', '#c43d53', '#e26043', '#f58e42', '#fbc267', '#fde68a'];
+        skyBands.forEach((col, i) => {
+          kCtx.fillStyle = col;
+          kCtx.fillRect(0, i * 11, V_W, 11);
+        });
+        kCtx.fillStyle = '#fef08a'; kCtx.fillRect(90, 68, 20, 16);
+        kCtx.fillStyle = '#ffffff'; kCtx.fillRect(94, 71, 12, 10);
+      } else if (currentMode === 'dia') {
+        const skyBands = ['#38bdf8', '#60a5fa', '#93c5fd', '#bfdbfe', '#dbeafe', '#eff6ff'];
+        skyBands.forEach((col, i) => {
+          kCtx.fillStyle = col;
+          kCtx.fillRect(0, i * 17, V_W, 17);
+        });
+        kCtx.fillStyle = '#fde047'; kCtx.fillRect(160, 16, 20, 20);
+        kCtx.fillStyle = '#ffffff'; kCtx.fillRect(164, 20, 12, 12);
+      } else {
+        const skyBands = ['#090514', '#110b24', '#191136', '#221545', '#2c1a54'];
+        skyBands.forEach((col, i) => {
+          kCtx.fillStyle = col;
+          kCtx.fillRect(0, i * 20, V_W, 20);
+        });
+        kCtx.fillStyle = '#fef08a';
+        kCtx.fillRect(162, 16, 14, 16);
+        kCtx.fillStyle = '#110b24';
+        kCtx.fillRect(158, 14, 12, 20);
+        kCtx.fillStyle = '#ffffff';
+        if (Math.sin(kTick * 0.1) > 0) { kCtx.fillRect(25, 20, 2, 2); kCtx.fillRect(120, 15, 2, 2); }
+        if (Math.cos(kTick * 0.12) > 0) { kCtx.fillRect(70, 30, 2, 2); kCtx.fillRect(140, 42, 2, 2); }
+      }
+
+      kCtx.fillStyle = (currentMode === 'noche') ? '#301c5c' : ((currentMode === 'dia') ? '#ffffff' : '#7e2d61');
+      kCtx.fillRect(16, 28, 28, 5);
+      kCtx.fillRect(20, 24, 20, 4);
+      kCtx.fillRect(138, 38, 32, 6);
+      kCtx.fillRect(144, 34, 22, 4);
+
+      // Grass lawn
+      kCtx.fillStyle = (currentMode === 'noche') ? '#142918' : '#2d4d31';
+      kCtx.beginPath();
+      kCtx.ellipse(100, 128, 120, 38, 0, 0, Math.PI * 2);
+      kCtx.fill();
+
+      kCtx.fillStyle = (currentMode === 'noche') ? '#0e1f11' : '#1f3d24';
+      kCtx.fillRect(0, 110, V_W, 30);
+
+      kCtx.fillStyle = (currentMode === 'noche') ? '#1f4523' : '#326138';
+      for (let x = 4; x < V_W; x += 6) {
+        const h = (x % 4 === 0) ? 5 : 3;
+        kCtx.fillRect(x, 110 - h, 2, h);
+      }
+
+      flowers.forEach((fl, idx) => {
+        const sway = Math.sin(kTick * 0.05 + idx) * 1.5;
+        const headX = Math.round(fl.x + sway);
+        const headY = fl.y - fl.stemH;
+
+        kCtx.fillStyle = '#388e3c';
+        kCtx.fillRect(fl.x, headY + 3, 2, fl.stemH - 3);
+
+        if (fl.type === 'tulip') {
+          kCtx.fillStyle = fl.color;
+          kCtx.fillRect(headX - 3, headY - 4, 7, 6);
+          kCtx.fillStyle = '#ffffff';
+          kCtx.fillRect(headX - 1, headY - 5, 3, 2);
+        } else if (fl.type === 'sunflower') {
+          kCtx.fillStyle = fl.color;
+          kCtx.fillRect(headX - 5, headY - 5, 11, 11);
+          kCtx.fillStyle = '#451a03';
+          kCtx.fillRect(headX - 2, headY - 2, 5, 5);
+        } else if (fl.type === 'daisy') {
+          kCtx.fillStyle = fl.color;
+          kCtx.fillRect(headX - 4, headY - 4, 9, 9);
+          kCtx.fillStyle = '#facc15';
+          kCtx.fillRect(headX - 1, headY - 1, 3, 3);
+        } else {
+          kCtx.fillStyle = fl.color;
+          kCtx.fillRect(headX - 4, headY - 4, 8, 8);
+          kCtx.fillStyle = '#fda4af';
+          kCtx.fillRect(headX - 2, headY - 2, 4, 3);
+        }
+      });
+
+      const cx = 76;
+      const cy = 38;
+      const breath = Math.round(Math.sin(kTick * 0.08) * 0.8);
+      const yOff = cy + breath;
+
+      const p = (col, x, y, w = 1, h = 1) => {
+        kCtx.fillStyle = col;
+        kCtx.fillRect(cx + x, yOff + y, w, h);
+      };
+
+      const OUTLINE = '#110c14';
+      const O_BASE = '#fca758';
+      const O_SHADOW = '#e27f2c';
+      const Y_FLECK = '#ffea00';
+      const Y_FLECK_LIGHT = '#fff9c4';
+      const EAR_PINK = '#fca5a5';
+      const BLUSH = '#f472b6';
+      const B_BASE = '#131118';
+      const B_RIM = '#2b2638';
+
+      // Orange Cat Body
+      for (let y = 34; y <= 72; y++) {
+        const xStart = 26;
+        let xEnd = 39 + Math.floor((y - 34) * 0.58);
+        if (y > 64) xEnd = 39 + Math.floor((64 - 34) * 0.58) - (y - 64) * 0.8;
+        for (let x = xStart; x <= xEnd; x++) p(O_BASE, x, y);
+      }
+      for (let y = 34; y <= 72; y++) {
+        let xEdge = 40 + Math.floor((y - 34) * 0.58);
+        if (y > 64) xEdge = 40 + Math.floor((64 - 34) * 0.58) - (y - 64) * 0.8;
+        p(OUTLINE, Math.floor(xEdge), y, 2, 1);
+      }
+      p(OUTLINE, 26, 72, 23, 2);
+
+      // Yellow flecks on orange back
+      p(Y_FLECK, 34, 42, 2, 2);
+      p(Y_FLECK_LIGHT, 35, 41, 1, 1);
+      p(Y_FLECK, 42, 50, 2, 3);
+      p(Y_FLECK, 38, 58, 3, 2);
+      p(Y_FLECK, 46, 62, 2, 2);
+      p(O_SHADOW, 40, 65, 4, 5);
+
+      // Orange Cat Triangular Ears
+      p(OUTLINE, 3, 4, 2, 8);
+      p(OUTLINE, 5, 1, 3, 3);
+      p(OUTLINE, 8, -1, 3, 3);
+      p(OUTLINE, 11, 2, 3, 4);
+      p(OUTLINE, 14, 6, 2, 4);
+      p(O_BASE, 5, 4, 3, 7);
+      p(O_BASE, 8, 2, 3, 8);
+      p(O_BASE, 11, 6, 3, 5);
+      p(EAR_PINK, 7, 5, 3, 5);
+      p(Y_FLECK, 8, 0, 2, 2);
+
+      p(OUTLINE, 19, -4, 3, 3);
+      p(OUTLINE, 22, -1, 3, 4);
+      p(OUTLINE, 25, 3, 2, 7);
+      p(OUTLINE, 16, -1, 3, 3);
+      p(O_BASE, 17, 2, 5, 8);
+      p(O_BASE, 22, 3, 3, 7);
+      p(EAR_PINK, 19, 2, 3, 5);
+      p(Y_FLECK, 20, -3, 2, 2);
+      p(OUTLINE, 11, 5, 6, 2);
+
+      // Orange Cat Face
+      for (let y = 7; y <= 22; y++) {
+        const x1 = Math.max(4, 9 - Math.floor((y - 7) * 0.6));
+        const x2 = Math.min(28, 24 + Math.floor((y - 7) * 0.45));
+        for (let x = x1; x <= x2; x++) p(O_BASE, x, y);
+      }
+      p(OUTLINE, 4, 11, 2, 9);
+      p(OUTLINE, 6, 20, 4, 2);
+
+      p(Y_FLECK, 14, 8, 3, 2);
+      p(Y_FLECK_LIGHT, 15, 7, 1, 1);
+      p(Y_FLECK, 8, 12, 2, 2);
+
+      // Smiling curved eyes ^^
+      p(OUTLINE, 8, 12, 4, 1);
+      p(OUTLINE, 7, 13, 1, 1);
+      p(OUTLINE, 12, 13, 1, 1);
+      p(OUTLINE, 17, 10, 4, 1);
+      p(OUTLINE, 16, 11, 1, 1);
+      p(OUTLINE, 21, 11, 1, 1);
+      p(OUTLINE, 14, 14, 2, 1);
+      p(OUTLINE, 14, 15, 1, 1);
+      p(BLUSH, 7, 14, 4, 2);
+      p(BLUSH, 21, 12, 3, 2);
+
+      // Black Cat Silhouette from behind
+      p(B_BASE, 25, 4, 4, 8);
+      p(B_BASE, 27, 1, 2, 3);
+      p(OUTLINE, 27, 0, 3, 2);
+      p(OUTLINE, 29, 2, 2, 6);
+
+      for (let y = 8; y <= 26; y++) {
+        const x1 = Math.max(9, 20 - Math.floor((y - 8) * 0.7));
+        const x2 = Math.min(38, 29 + Math.floor((y - 8) * 0.6));
+        for (let x = x1; x <= x2; x++) p(B_BASE, x, y);
+      }
+
+      // Lateral Right Ear
+      p(B_BASE, 34, 14, 6, 6);
+      p(B_BASE, 40, 16, 6, 4);
+      p(B_BASE, 46, 18, 4, 2);
+      p(OUTLINE, 33, 13, 7, 2);
+      p(OUTLINE, 40, 15, 6, 2);
+      p(OUTLINE, 46, 17, 4, 2);
+      p(OUTLINE, 44, 19, 4, 2);
+      p(OUTLINE, 37, 20, 7, 2);
+
+      // Black Cat Body
+      for (let y = 24; y <= 72; y++) {
+        let x1 = 4 + Math.floor(Math.sin((y - 24) / 11) * 2.5);
+        if (y < 34) x1 = 14 - (y - 24) * 1.0;
+        let x2 = 36 - Math.floor((y - 24) * 0.28);
+        if (y > 56) x2 = 33 - Math.floor((y - 56) * 0.5);
+
+        for (let x = Math.floor(x1); x <= Math.floor(x2); x++) p(B_BASE, x, y);
+      }
+
+      for (let y = 22; y <= 36; y++) p(B_RIM, 30 + Math.floor(Math.sin(y * 0.25) * 2), y, 2, 1);
+      for (let y = 48; y <= 68; y++) p(B_RIM, 28, y, 2, 1);
+
+      p(OUTLINE, 4, 72, 27, 2);
+      p(OUTLINE, 2, 58, 2, 14);
+
+      // Orange Cat Hugging Arm & Rounded Paw
+      for (let y = 28; y <= 38; y++) {
+        for (let x = 23; x <= 34; x++) p(O_BASE, x, y);
+      }
+      for (let x = 12; x <= 27; x++) p(O_BASE, x, 33, 1, 8);
+      for (let x = 8; x <= 16; x++) p(O_BASE, x, 36, 1, 9);
+
+      for (let y = 45; y <= 55; y++) {
+        const r = 5 - Math.abs(y - 50) * 0.9;
+        for (let x = Math.floor(5 - r); x <= Math.floor(5 + r); x++) p(O_BASE, x, y);
+      }
+
+      p(Y_FLECK, 18, 35, 3, 2);
+      p(Y_FLECK_LIGHT, 19, 34, 1, 1);
+      p(Y_FLECK, 5, 48, 3, 2);
+      p(O_SHADOW, 13, 41, 10, 2);
+
+      p(OUTLINE, 13, 32, 15, 2);
+      p(OUTLINE, 9, 34, 5, 2);
+      p(OUTLINE, 5, 37, 5, 2);
+      p(OUTLINE, 2, 45, 2, 9);
+      p(OUTLINE, 3, 43, 3, 2);
+      p(OUTLINE, 3, 54, 4, 2);
+      p(OUTLINE, 6, 52, 4, 2);
+      p(OUTLINE, 9, 43, 16, 2);
+
+      // Beating heart over them
+      const pulse = (Math.sin(kTick * 0.12) > 0);
+      kCtx.fillStyle = pulse ? '#ff2a6d' : '#ff6584';
+      kCtx.fillRect(cx + 19, yOff - 14, 2, 2);
+      kCtx.fillRect(cx + 22, yOff - 14, 2, 2);
+      kCtx.fillRect(cx + 18, yOff - 13, 7, 2);
+      kCtx.fillRect(cx + 19, yOff - 11, 5, 2);
+      kCtx.fillRect(cx + 20, yOff - 9, 3, 1);
+      kCtx.fillRect(cx + 21, yOff - 8, 1, 1);
+
+      // Petals
+      petals.forEach(pt => {
+        pt.x += pt.speedX + Math.sin(kTick * 0.04 + pt.wave) * 0.4;
+        pt.y += pt.speedY;
+        if (pt.y > V_H + 4) { pt.y = -4; pt.x = Math.random() * (V_W + 30); }
+        if (pt.x < -6) pt.x = V_W + 4;
+        kCtx.fillStyle = pt.color;
+        kCtx.fillRect(Math.round(pt.x), Math.round(pt.y), pt.size, pt.size);
+      });
+
+      kTick++;
+    }
+
+    let kAnimId = null;
+    function kLoop() {
+      kCtx.clearRect(0, 0, V_W, V_H);
+      drawKittenScene();
+      kAnimId = requestAnimationFrame(kLoop);
+    }
+    kLoop();
+
+    const modeButtons = {
+      dia: document.getElementById('btnModeDia'),
+      ocaso: document.getElementById('btnModeOcaso'),
+      noche: document.getElementById('btnModeNoche')
+    };
+
+    function setTimeMode(mode) {
+      currentMode = mode;
+      Object.keys(modeButtons).forEach(m => {
+        if (m === mode) {
+          modeButtons[m].classList.add('active-mode');
+        } else {
+          modeButtons[m].classList.remove('active-mode');
+        }
+      });
+    }
+
+    modeButtons.dia.addEventListener('click', () => setTimeMode('dia'));
+    modeButtons.ocaso.addEventListener('click', () => setTimeMode('ocaso'));
+    modeButtons.noche.addEventListener('click', () => setTimeMode('noche'));
+
+    function spawnDomHeart(domX, domY) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      const colors = ['#f43f5e', '#ec4899', '#f472b6', '#fbbf24', '#fbcfe8'];
+      const col = colors[Math.floor(Math.random() * colors.length)];
+      heart.innerHTML = `
+        <svg width="22" height="22" viewBox="0 0 10 10" style="shape-rendering: crisp-edges;">
+          <rect x="2" y="1" width="2" height="2" fill="${col}" />
+          <rect x="6" y="1" width="2" height="2" fill="${col}" />
+          <rect x="1" y="2" width="8" height="3" fill="${col}" />
+          <rect x="2" y="5" width="6" height="2" fill="${col}" />
+          <rect x="3" y="7" width="4" height="1" fill="${col}" />
+          <rect x="4" y="8" width="2" height="1" fill="${col}" />
+        </svg>
+      `;
+      heart.style.left = `${domX - 11}px`;
+      heart.style.top = `${domY - 11}px`;
+      heartsOverlay.appendChild(heart);
+      setTimeout(() => heart.remove(), 1250);
+    }
+
+    function petCats(e) {
+      playPurrSound();
+      let x, y;
+      if (e && e.clientX) {
+        const r = kCanvas.getBoundingClientRect();
+        x = e.clientX - r.left;
+        y = e.clientY - r.top;
+      } else {
+        const r = kCanvas.getBoundingClientRect();
+        x = r.width * 0.52;
+        y = r.height * 0.48;
+      }
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => {
+          spawnDomHeart(x + (Math.random() - 0.5) * 50, y + (Math.random() - 0.5) * 40);
+        }, i * 85);
+      }
+    }
+
+    document.getElementById('btnPet').addEventListener('click', () => petCats(null));
+
+    kCanvas.addEventListener('click', (e) => {
+      const rect = kCanvas.getBoundingClientRect();
+      const scaleX = V_W / rect.width;
+      const scaleY = V_H / rect.height;
+      const cx = (e.clientX - rect.left) * scaleX;
+      const cy = (e.clientY - rect.top) * scaleY;
+
+      if (cx >= 70 && cx <= 130 && cy >= 30 && cy <= 112) {
+        petCats(e);
+      } else if (cy >= 105) {
+        flowers.push({
+          x: Math.max(8, Math.min(V_W - 8, Math.floor(cx))),
+          y: Math.max(115, Math.min(V_H - 4, Math.floor(cy))),
+          type: ['tulip', 'daisy', 'sunflower', 'rose'][Math.floor(Math.random() * 4)],
+          color: ['#ff3366', '#ffffff', '#facc15', '#f43f5e', '#fb923c'][Math.floor(Math.random() * 5)],
+          stemH: 10 + Math.floor(Math.random() * 9)
+        });
+        spawnDomHeart(e.clientX - rect.left, e.clientY - rect.top);
+      } else {
+        spawnDomHeart(e.clientX - rect.left, e.clientY - rect.top);
+      }
+    });
+
+    const cakeCanvas = document.getElementById('cakeCanvas');
+    const cakeCtx = cakeCanvas.getContext('2d');
+    let cakeTick = 0;
+
+    function drawPixelCake() {
+      cakeCtx.clearRect(0, 0, cakeCanvas.width, cakeCanvas.height);
+
+      // Plate
+      cakeCtx.fillStyle = '#64748b'; cakeCtx.fillRect(6, 34, 48, 4);
+      cakeCtx.fillStyle = '#94a3b8'; cakeCtx.fillRect(10, 32, 40, 2);
+
+      // Bottom Tier
+      cakeCtx.fillStyle = '#b45309'; cakeCtx.fillRect(12, 22, 36, 10);
+      cakeCtx.fillStyle = '#fce7f3'; cakeCtx.fillRect(12, 26, 36, 2);
+      cakeCtx.fillStyle = '#f43f5e'; cakeCtx.fillRect(10, 20, 40, 3);
+
+      // Top Tier
+      cakeCtx.fillStyle = '#f59e0b'; cakeCtx.fillRect(18, 11, 24, 9);
+      cakeCtx.fillStyle = '#fce7f3'; cakeCtx.fillRect(18, 14, 24, 2);
+      cakeCtx.fillStyle = '#f43f5e'; cakeCtx.fillRect(16, 9, 28, 3);
+
+      // Cherries & Sprinkles
+      cakeCtx.fillStyle = '#e11d48'; cakeCtx.fillRect(17, 7, 3, 2); cakeCtx.fillRect(40, 7, 3, 2);
+      cakeCtx.fillStyle = '#38bdf8'; cakeCtx.fillRect(22, 19, 2, 2);
+      cakeCtx.fillStyle = '#4ade80'; cakeCtx.fillRect(36, 19, 2, 2);
+
+      // Candle
+      cakeCtx.fillStyle = '#ffffff'; cakeCtx.fillRect(28, 4, 4, 5);
+      cakeCtx.fillStyle = '#38bdf8'; cakeCtx.fillRect(28, 5, 4, 1);
+
+      // Flickering Flame
+      const flameShift = (Math.sin(cakeTick * 0.25) > 0) ? 1 : 0;
+      cakeCtx.fillStyle = '#facc15'; cakeCtx.fillRect(28 + flameShift, 0, 4, 4);
+      cakeCtx.fillStyle = '#ef4444'; cakeCtx.fillRect(29 + flameShift, 2, 2, 2);
+
+      cakeTick++;
+      requestAnimationFrame(drawPixelCake);
+    }
+
+    function drawPixelHouse() {
+      const houseCanvas = document.getElementById('houseCanvas');
+      const hCtx = houseCanvas.getContext('2d');
+      hCtx.clearRect(0, 0, 22, 22);
+
+      // Roof
+      hCtx.fillStyle = '#f43f5e';
+      hCtx.fillRect(10, 2, 2, 2);
+      hCtx.fillRect(8, 4, 6, 2);
+      hCtx.fillRect(6, 6, 10, 2);
+      hCtx.fillRect(4, 8, 14, 2);
+      hCtx.fillRect(2, 10, 18, 2);
+
+      // Chimney
+      hCtx.fillStyle = '#78350f'; hCtx.fillRect(14, 2, 3, 5);
+
+      // Walls
+      hCtx.fillStyle = '#fde68a'; hCtx.fillRect(4, 12, 14, 8);
+      hCtx.fillStyle = '#1e1b4b'; hCtx.fillRect(3, 20, 16, 2);
+
+      // Door
+      hCtx.fillStyle = '#b45309'; hCtx.fillRect(9, 14, 4, 6);
+      hCtx.fillStyle = '#fef08a'; hCtx.fillRect(12, 16, 1, 1);
+
+      // Windows
+      hCtx.fillStyle = '#38bdf8'; hCtx.fillRect(5, 13, 3, 3); hCtx.fillRect(14, 13, 3, 3);
+    }
+
+    function drawPixelPin() {
+      const pinCanvas = document.getElementById('pinCanvas');
+      const pCtx = pinCanvas.getContext('2d');
+      pCtx.clearRect(0, 0, 20, 20);
+
+      // Red location pin icon
+      pCtx.fillStyle = '#ef4444';
+      pCtx.fillRect(7, 2, 6, 2);
+      pCtx.fillRect(5, 4, 10, 6);
+      pCtx.fillRect(7, 10, 6, 3);
+      pCtx.fillRect(8, 13, 4, 3);
+      pCtx.fillRect(9, 16, 2, 2);
+
+      // Shadow base
+      pCtx.fillStyle = 'rgba(0,0,0,0.3)';
+      pCtx.fillRect(7, 18, 6, 2);
+
+      // White inner circle
+      pCtx.fillStyle = '#ffffff';
+      pCtx.fillRect(8, 6, 4, 3);
+    }
+
+    function drawPixelClock() {
+      const clockCanvas = document.getElementById('clockCanvas');
+      const cCtx = clockCanvas.getContext('2d');
+      cCtx.clearRect(0, 0, 22, 22);
+
+      // Outer bezel ring
+      cCtx.fillStyle = '#fcd34d';
+      cCtx.fillRect(6, 1, 10, 2);
+      cCtx.fillRect(6, 19, 10, 2);
+      cCtx.fillRect(1, 6, 2, 10);
+      cCtx.fillRect(19, 6, 2, 10);
+      cCtx.fillRect(3, 3, 4, 4);
+      cCtx.fillRect(15, 3, 4, 4);
+      cCtx.fillRect(3, 15, 4, 4);
+      cCtx.fillRect(15, 15, 4, 4);
+
+      // Clock face
+      cCtx.fillStyle = '#1e1b4b';
+      cCtx.fillRect(3, 5, 16, 12);
+      cCtx.fillRect(5, 3, 12, 16);
+
+      // 4 Hands pointing North, South, East, West
+      cCtx.fillStyle = '#38bdf8';
+      cCtx.fillRect(10, 4, 2, 6);  // Up
+      cCtx.fillStyle = '#f43f5e';
+      cCtx.fillRect(10, 12, 2, 6); // Down
+      cCtx.fillStyle = '#4ade80';
+      cCtx.fillRect(12, 10, 6, 2); // Right
+      cCtx.fillStyle = '#facc15';
+      cCtx.fillRect(4, 10, 6, 2);  // Left
+
+      // Center pivot
+      cCtx.fillStyle = '#ffffff';
+      cCtx.fillRect(9, 9, 4, 4);
+      cCtx.fillStyle = '#0f172a';
+      cCtx.fillRect(10, 10, 2, 2);
+    }
+
+    function drawPixelPark() {
+      const pCanvas = document.getElementById('parkCanvas');
+      const pCtx = pCanvas.getContext('2d');
+      const W = pCanvas.width;
+      const H = pCanvas.height;
+
+      // 1. Sky & mountains in background
+      pCtx.fillStyle = '#cad5e2'; pCtx.fillRect(0, 0, W, 36);
+      pCtx.fillStyle = '#94a3b8';
+      pCtx.beginPath();
+      pCtx.moveTo(0, 24); pCtx.lineTo(60, 14); pCtx.lineTo(120, 20); pCtx.lineTo(180, 12); pCtx.lineTo(W, 22); pCtx.lineTo(W, 36); pCtx.lineTo(0, 36);
+      pCtx.fill();
+
+      // 2. Wire mesh court fence in background
+      pCtx.fillStyle = '#475569';
+      for (let x = 6; x <= 160; x += 18) pCtx.fillRect(x, 16, 2, 30);
+      pCtx.fillStyle = '#cbd5e1';
+      for (let y = 18; y <= 44; y += 4) pCtx.fillRect(6, y, 156, 1);
+      for (let x = 6; x <= 160; x += 4) pCtx.fillRect(x, 18, 1, 26);
+      
+      // Green court turf
+      pCtx.fillStyle = '#22c55e'; pCtx.fillRect(10, 36, 150, 8);
+
+      // Brown brick building on the right
+      pCtx.fillStyle = '#b45309'; pCtx.fillRect(174, 16, 60, 30);
+      pCtx.fillStyle = '#f8fafc'; pCtx.fillRect(182, 22, 6, 6); pCtx.fillRect(202, 22, 6, 6);
+
+      // 3. Clean Horizontal Grass Lawn
+      pCtx.fillStyle = '#2e7d32'; pCtx.fillRect(0, 44, W, 42);
+
+      // Trimmed Bush Hedges cleanly horizontal above sidewalk
+      const drawBush = (bx, by, bw, bh) => {
+        pCtx.fillStyle = '#14532d'; pCtx.fillRect(bx, by, bw, bh);
+        pCtx.fillStyle = '#16a34a'; pCtx.fillRect(bx + 1, by - 2, bw - 2, bh);
+        pCtx.fillStyle = '#4ade80'; pCtx.fillRect(bx + 2, by - 2, bw - 4, 2);
+      };
+      drawBush(12, 66, 48, 11);
+      drawBush(64, 62, 56, 12);
+      drawBush(124, 60, 52, 12);
+      drawBush(180, 62, 54, 11);
+
+      // 4. The 2 Red and White benches on right
+      const drawBench = (x, y) => {
+        pCtx.fillStyle = '#dc2626';
+        pCtx.fillRect(x, y, 4, 12);
+        pCtx.fillRect(x + 18, y, 4, 12);
+        pCtx.fillRect(x, y + 2, 22, 3);
+        pCtx.fillStyle = '#ffffff';
+        pCtx.fillRect(x + 2, y - 4, 18, 3);
+        pCtx.fillRect(x + 2, y, 18, 3);
+        pCtx.fillRect(x + 2, y + 4, 18, 3);
+      };
+      drawBench(74, 52);
+      drawBench(136, 50);
+
+      // 5. Trees: 100% natural pixel brown wood (NO white painted base!)
+      const drawTree = (tx, ty, th) => {
+        pCtx.fillStyle = '#78350f';
+        pCtx.fillRect(tx, ty + 10, 4, th - 10);
+        pCtx.fillStyle = '#5c2608';
+        pCtx.fillRect(tx + 2, ty + 10, 2, th - 10);
+        pCtx.fillRect(tx - 3, ty + 14, 3, 2);
+        pCtx.fillRect(tx + 4, ty + 18, 3, 2);
+        // Foliage clumps
+        pCtx.fillStyle = '#15803d';
+        pCtx.fillRect(tx - 12, ty, 28, 15);
+        pCtx.fillRect(tx - 8, ty - 6, 20, 12);
+        pCtx.fillStyle = '#22c55e';
+        pCtx.fillRect(tx - 6, ty - 4, 16, 6);
+      };
+      drawTree(90, 12, 46);
+      drawTree(160, 8, 50);
+      drawTree(220, 16, 42);
+
+      // 6. Clean Horizontal Sidewalk (without boomerang shape)
+      pCtx.fillStyle = '#cbd5e1';
+      pCtx.fillRect(0, 86, W, 12);
+      pCtx.fillStyle = '#94a3b8';
+      for (let sx = 0; sx < W; sx += 24) {
+        pCtx.fillRect(sx, 86, 1, 12);
+      }
+
+      // Yellow horizontal curb line
+      pCtx.fillStyle = '#eab308';
+      pCtx.fillRect(0, 98, W, 4);
+
+      // 7. Complete Horizontal Street / Road with dashed markings
+      pCtx.fillStyle = '#1e293b';
+      pCtx.fillRect(0, 102, W, 28);
+
+      pCtx.fillStyle = '#ffffff';
+      for (let lx = 10; lx < W; lx += 32) {
+        pCtx.fillRect(lx, 114, 18, 4);
+      }
+    }
+
+    function buildHeartPhotoBorder() {
+      const container = document.getElementById('heartBorderWrapper');
+      container.innerHTML = '';
+
+      const heartSvg = (col) => `
+        <svg width="14" height="14" viewBox="0 0 10 10" style="shape-rendering: crisp-edges;">
+          <rect x="2" y="1" width="2" height="2" fill="${col}"/>
+          <rect x="6" y="1" width="2" height="2" fill="${col}"/>
+          <rect x="1" y="2" width="8" height="3" fill="${col}"/>
+          <rect x="2" y="5" width="6" height="2" fill="${col}"/>
+          <rect x="3" y="7" width="4" height="1" fill="${col}"/>
+          <rect x="4" y="8" width="2" height="1" fill="${col}"/>
+        </svg>
+      `;
+
+      // Top row
+      for (let x = 6; x < 230; x += 22) {
+        const h = document.createElement('div');
+        h.className = 'absolute';
+        h.style.left = `${x}px`;
+        h.style.top = `-7px`;
+        h.innerHTML = heartSvg('#ff2a6d');
+        container.appendChild(h);
+      }
+      // Bottom row
+      for (let x = 6; x < 230; x += 22) {
+        const h = document.createElement('div');
+        h.className = 'absolute';
+        h.style.left = `${x}px`;
+        h.style.bottom = `-7px`;
+        h.innerHTML = heartSvg('#ff2a6d');
+        container.appendChild(h);
+      }
+      // Left column
+      for (let y = 14; y < 290; y += 24) {
+        const h = document.createElement('div');
+        h.className = 'absolute';
+        h.style.left = `-7px`;
+        h.style.top = `${y}px`;
+        h.innerHTML = heartSvg('#ff2a6d');
+        container.appendChild(h);
+      }
+      // Right column
+      for (let y = 14; y < 290; y += 24) {
+        const h = document.createElement('div');
+        h.className = 'absolute';
+        h.style.right = `-7px`;
+        h.style.top = `${y}px`;
+        h.innerHTML = heartSvg('#ff2a6d');
+        container.appendChild(h);
+      }
+    }
+
+    function typeText(elementId, text, speed = 40) {
+      return new Promise((resolve) => {
+        const el = document.getElementById(elementId);
+        el.textContent = '';
+        el.classList.add('cursor-blink');
+        let idx = 0;
+
+        function step() {
+          if (idx < text.length) {
+            el.textContent += text.charAt(idx);
+            playKeyTick();
+            idx++;
+            setTimeout(step, speed);
+          } else {
+            el.classList.remove('cursor-blink');
+            resolve();
+          }
+        }
+        step();
+      });
+    }
+
+    async function startInvitationSequence() {
+      // Step 1: Reveal Cake and type "Feliz Cumpleaños" horizontally side by side
+      const rowCakeHappy = document.getElementById('rowCakeHappy');
+      rowCakeHappy.classList.remove('hidden');
+      rowCakeHappy.classList.add('flex');
+      drawPixelCake();
+      await typeText('lineHappy', 'Feliz Cumpleaños', 55);
+      await new Promise(r => setTimeout(r, 220));
+
+      // Step 2: Reveal House Icon and type "Lugar:"
+      const rowLugar = document.getElementById('rowLugar');
+      rowLugar.classList.remove('hidden');
+      rowLugar.classList.add('flex');
+      drawPixelHouse();
+      await typeText('lineLugar', 'Lugar:', 50);
+      await new Promise(r => setTimeout(r, 220));
+
+      // Step 3: Reveal Corrected Park Canvas
+      const parkContainer = document.getElementById('parkContainer');
+      parkContainer.classList.remove('hidden');
+      parkContainer.classList.add('flex');
+      drawPixelPark();
+      await new Promise(r => setTimeout(r, 300));
+
+      // Step 4: Reveal Location Pin and type Dirección
+      const rowDireccion = document.getElementById('rowDireccion');
+      rowDireccion.classList.remove('hidden');
+      rowDireccion.classList.add('flex');
+      drawPixelPin();
+      await typeText('lineDireccion', 'dirección:Al costado del mercado Numero 1 en el parquesito ya sabes ', 42);
+      await new Promise(r => setTimeout(r, 220));
+
+      // Step 5: Reveal 4-Hand Clock and type "Dia y Hora: Por confirmar contigo je"
+      const rowHora = document.getElementById('rowHora');
+      rowHora.classList.remove('hidden');
+      rowHora.classList.add('flex');
+      drawPixelClock();
+      await typeText('lineHora', 'Dia y Hora: Por confirmar contigo je', 45);
+      await new Promise(r => setTimeout(r, 300));
+
+      // Step 6: Reveal Actions
+      const finalActions = document.getElementById('finalActions');
+      finalActions.classList.remove('hidden');
+      finalActions.classList.add('flex');
+    }
+
+function animateEkgTracingKIntoCenter() {
+  return new Promise((resolve) => {
+    const ekgCanvas = document.getElementById('ekgCanvas');
+    const ctx = ekgCanvas.getContext('2d');
+
+    // Canvas a tamaño real del viewport (sin deformación por CSS)
+    ekgCanvas.width = window.innerWidth;
+    ekgCanvas.height = window.innerHeight;
+    ekgCanvas.style.width = window.innerWidth + 'px';
+    ekgCanvas.style.height = window.innerHeight + 'px';
+    ekgCanvas.style.maxWidth = 'none';
+    ekgCanvas.style.maxHeight = 'none';
+
+    const W = ekgCanvas.width;
+    const H = ekgCanvas.height;
+    const midY = H / 2;
+    const midX = W / 2;
+    const u = Math.min(1, W / 520); // escala para pantallas angostas
+
+    const startX = midX - 220 * u;
+    const kX = midX - 110 * u;
+
+    const points = [
+      { x: startX,           y: midY },
+      { x: startX + 40 * u,  y: midY },
+      { x: startX + 50 * u,  y: midY - 35 * u },
+      { x: startX + 60 * u,  y: midY + 45 * u },
+      { x: startX + 70 * u,  y: midY - 60 * u },
+      { x: startX + 80 * u,  y: midY },
+      { x: kX,               y: midY },
+      // Tallo de la K
+      { x: kX,               y: midY - 55 * u },
+      { x: kX,               y: midY + 55 * u },
+      { x: kX,               y: midY },
+      // Diagonal superior
+      { x: kX + 45 * u,      y: midY - 55 * u },
+      { x: kX,               y: midY },
+      // Diagonal inferior
+      { x: kX + 50 * u,      y: midY + 55 * u },
+      // Salida y llegada exacta al centro
+      { x: kX + 60 * u,      y: midY },
+      { x: midX,             y: midY }
+    ];
+
+    const startTime = performance.now();
+    const duration = 2000;
+
+    playEkgBeep();
+    setTimeout(playEkgBeep, 450);
+
+    function drawFrame(now) {
+      const elapsed = now - startTime;
+      const pct = Math.min(1, elapsed / duration);
+
+      ctx.clearRect(0, 0, W, H);
+
+      // Rejilla del monitor
+      ctx.strokeStyle = 'rgba(192, 132, 252, 0.12)';
+      ctx.lineWidth = 1;
+      for (let gx = 0; gx < W; gx += 30) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+      for (let gy = 0; gy < H; gy += 30) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+
+      // Trazo EKG con glow
+      ctx.strokeStyle = '#c084fc';
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.shadowColor = '#d8b4fe';
+      ctx.shadowBlur = 10;
+
+      const totalSegments = points.length - 1;
+      const targetIndex = Math.min(totalSegments, Math.floor(pct * totalSegments));
+      const subPct = (pct * totalSegments) - Math.floor(pct * totalSegments);
+
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i <= targetIndex; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      if (targetIndex < totalSegments) {
+        const curP = points[targetIndex];
+        const nextP = points[targetIndex + 1];
+        const interpX = curP.x + (nextP.x - curP.x) * subPct;
+        const interpY = curP.y + (nextP.y - curP.y) * subPct;
+        ctx.lineTo(interpX, interpY);
+        ctx.stroke();
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(interpX - 3, interpY - 3, 6, 6);
+      } else {
+        ctx.stroke();
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(midX - 3, midY - 3, 6, 6);
+      }
+      ctx.shadowBlur = 0;
+
+      if (pct < 1) {
+        requestAnimationFrame(drawFrame);
+      } else {
+        // Sin clearRect final: la línea queda dibujada en el centro exacto
+        resolve();
+      }
+    }
+    requestAnimationFrame(drawFrame);
+  });
+
+      return new Promise((resolve) => {
+        const ekgCanvas = document.getElementById('ekgCanvas');
+        const ctx = ekgCanvas.getContext('2d');
+        
+        ekgCanvas.width = window.innerWidth;
+        ekgCanvas.height = window.innerHeight;
+        const W = ekgCanvas.width;
+        const H = ekgCanvas.height;
+        const midY = H / 2;
+        const midX = W / 2;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.strokeStyle = '#c084fc';
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        // The line starts left, blips, draws 'K', and extends right into the exact center (midX, midY)
+        const startX = Math.max(20, midX - 220);
+        const kX = midX - 70;
+
+        const points = [
+          { x: startX, y: midY },
+          { x: startX + 40, y: midY },
+          { x: startX + 50, y: midY - 35 },
+          { x: startX + 60, y: midY + 45 },
+          { x: startX + 70, y: midY - 60 },
+          { x: startX + 80, y: midY },
+          { x: kX, y: midY },
+          // Letter K stem
+          { x: kX, y: midY - 55 },
+          { x: kX, y: midY + 55 },
+          { x: kX, y: midY },
+          // Letter K upper diagonal
+          { x: kX + 45, y: midY - 55 },
+          { x: kX, y: midY },
+          // Letter K lower diagonal
+          { x: kX + 50, y: midY + 55 },
+          // Connect out and draw straight line arriving directly into the screen center
+          { x: kX + 80, y: midY },
+          { x: midX, y: midY }
+        ];
+
+        const startTime = performance.now();
+        const duration = 2000;
+
+        playEkgBeep();
+        setTimeout(playEkgBeep, 450);
+
+        function drawFrame(now) {
+          const elapsed = now - startTime;
+          const pct = Math.min(1, elapsed / duration);
+
+          ctx.clearRect(0, 0, W, H);
+
+          // Subtle monitor grid
+          ctx.strokeStyle = 'rgba(192, 132, 252, 0.12)';
+          ctx.lineWidth = 1;
+          for (let gx = 0; gx < W; gx += 30) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+          for (let gy = 0; gy < H; gy += 30) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+
+          // Glowing EKG trace
+          ctx.strokeStyle = '#c084fc';
+          ctx.lineWidth = 3;
+          ctx.shadowColor = '#d8b4fe';
+          ctx.shadowBlur = 10;
+
+          const totalSegments = points.length - 1;
+          const targetIndex = Math.min(totalSegments, Math.floor(pct * totalSegments));
+          const subPct = (pct * totalSegments) - Math.floor(pct * totalSegments);
+
+          ctx.beginPath();
+          ctx.moveTo(points[0].x, points[0].y);
+          for (let i = 1; i <= targetIndex; i++) {
+            ctx.lineTo(points[i].x, points[i].y);
+          }
+          if (targetIndex < totalSegments) {
+            const curP = points[targetIndex];
+            const nextP = points[targetIndex + 1];
+            const interpX = curP.x + (nextP.x - curP.x) * subPct;
+            const interpY = curP.y + (nextP.y - curP.y) * subPct;
+            ctx.lineTo(interpX, interpY);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(interpX - 3, interpY - 3, 6, 6);
+          } else {
+            // Pulse at the center point where line arrived
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(midX - 3, midY - 3, 6, 6);
+          }
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+
+          if (pct < 1) {
+            requestAnimationFrame(drawFrame);
+          } else {
+            resolve();
+          }
+        }
+        requestAnimationFrame(drawFrame);
+      });
+    }
+
+    function multiplyHeartsExplosion() {
+      const container = document.getElementById('flyingHeartsContainer');
+      container.innerHTML = '';
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      for (let i = 0; i < 32; i++) {
+        const mini = document.createElement('div');
+        mini.className = 'absolute transition-all duration-700 ease-out';
+        mini.style.left = `${centerX - 8}px`;
+        mini.style.top = `${centerY - 8}px`;
+        mini.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 10 10" style="shape-rendering: crisp-edges;">
+            <rect x="2" y="1" width="2" height="2" fill="#ff2a6d"/>
+            <rect x="6" y="1" width="2" height="2" fill="#ff2a6d"/>
+            <rect x="1" y="2" width="8" height="3" fill="#ff2a6d"/>
+            <rect x="2" y="5" width="6" height="2" fill="#ff2a6d"/>
+            <rect x="3" y="7" width="4" height="1" fill="#ff2a6d"/>
+            <rect x="4" y="8" width="2" height="1" fill="#ff2a6d"/>
+          </svg>
+        `;
+        container.appendChild(mini);
+
+        const angle = (i / 32) * Math.PI * 2;
+        const dist = 140 + Math.random() * 120;
+        const targetX = centerX + Math.cos(angle) * dist;
+        const targetY = centerY + Math.sin(angle) * dist;
+
+        setTimeout(() => {
+          mini.style.transform = `translate(${targetX - centerX}px, ${targetY - centerY}px) scale(1.2)`;
+          mini.style.opacity = '0';
+        }, 30);
+      }
+      setTimeout(() => { container.innerHTML = ''; }, 750);
+    }
+
+    const btnContinue = document.getElementById('btnContinue');
+    const sceneKittens = document.getElementById('sceneKittens');
+    const kittenContainer = document.getElementById('kittenContainer');
+    const transOverlay = document.getElementById('transOverlay');
+    const starsVoid = document.getElementById('starsVoid');
+    const ekgContainer = document.getElementById('ekgContainer');
+    const heartCenter = document.getElementById('heartCenter');
+    const sceneInvite = document.getElementById('sceneInvite');
+
+    function populateStarsVoid() {
+      starsVoid.innerHTML = '';
+      for (let i = 0; i < 40; i++) {
+        const s = document.createElement('div');
+        s.className = 'star-sparkle';
+        s.style.width = `${Math.random() > 0.6 ? 2 : 1}px`;
+        s.style.height = s.style.width;
+        s.style.left = `${Math.random() * 100}%`;
+        s.style.top = `${Math.random() * 100}%`;
+        s.style.animationDelay = `${Math.random() * 2}s`;
+        starsVoid.appendChild(s);
+      }
+    }
+
+    btnContinue.addEventListener('click', async () => {
+      getAudioContext();
+      playWhooshSound();
+
+      // 1. Scene compresses into glowing CRT noodle
+      kittenContainer.classList.add('noodle-anim');
+
+      // 2. Fades to complete black screen with white stars
+      setTimeout(async () => {
+        transOverlay.classList.remove('hidden');
+        transOverlay.classList.add('flex');
+        transOverlay.style.opacity = '1';
+        sceneKittens.classList.add('hidden');
+        populateStarsVoid();
+
+        // 3. EKG monitor traces purple 'K' and leads into exact center (no 'SIGNOS VITALES' text)
+        ekgContainer.classList.remove('hidden');
+        ekgContainer.classList.add('flex');
+        await animateEkgTracingKIntoCenter();
+
+        // 4. Exact 3 SECONDS pause while line holds at center before revealing the heart
+        await new Promise(r => setTimeout(r, 3000));
+
+        // Hide EKG Canvas
+        ekgContainer.classList.add('hidden');
+        ekgContainer.classList.remove('flex');
+
+        // 5. Beating heart emerges in the center with heartbeat audio
+        heartCenter.classList.remove('hidden');
+        heartCenter.classList.add('flex');
+        playHeartbeatSound();
+        setTimeout(playHeartbeatSound, 850);
+
+        // 6. Heart multiplies and flies to create the photo border
+        setTimeout(() => {
+          multiplyHeartsExplosion();
+
+          transOverlay.style.transition = 'opacity 0.7s ease';
+          transOverlay.style.opacity = '0';
+
+          setTimeout(() => {
+            transOverlay.classList.add('hidden');
+            transOverlay.classList.remove('flex');
+            heartCenter.classList.add('hidden');
+
+            // Reveal Scene 2
+            sceneInvite.classList.remove('hidden');
+            sceneInvite.classList.add('flex');
+            buildHeartPhotoBorder();
+            startInvitationSequence();
+          }, 700);
+
+        }, 1700);
+
+      }, 1200);
+    });
+
+    const btnAccept = document.getElementById('btnAccept');
+    const confirmNotice = document.getElementById('confirmNotice');
+    const confettiCanvas = document.getElementById('confettiCanvas');
+    const confCtx = confettiCanvas.getContext('2d');
+    let confettiParticles = [];
+    let confAnimId = null;
+
+    function resizeConfetti() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeConfetti);
+    resizeConfetti();
+
+    function launchConfetti() {
+      confettiCanvas.classList.remove('hidden');
+      confettiParticles = [];
+      const colors = ['#f43f5e', '#ec4899', '#facc15', '#38bdf8', '#4ade80', '#c084fc', '#ffffff'];
+
+      for (let i = 0; i < 95; i++) {
+        confettiParticles.push({
+          x: confettiCanvas.width / 2 + (Math.random() - 0.5) * 80,
+          y: confettiCanvas.height / 2 + (Math.random() - 0.5) * 60,
+          vx: (Math.random() - 0.5) * 14,
+          vy: -6 - Math.random() * 11,
+          size: 4 + Math.floor(Math.random() * 4),
+          color: colors[Math.floor(Math.random() * colors.length)],
+          gravity: 0.28,
+        });
+      }
+
+      function updateConfetti() {
+        confCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        let active = 0;
+
+        confettiParticles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.vx *= 0.98;
+
+          if (p.y < confettiCanvas.height + 20) active++;
+
+          confCtx.fillStyle = p.color;
+          confCtx.fillRect(Math.round(p.x), Math.round(p.y), p.size, p.size);
+        });
+
+        if (active > 0) {
+          confAnimId = requestAnimationFrame(updateConfetti);
+        } else {
+          confettiCanvas.classList.add('hidden');
+          cancelAnimationFrame(confAnimId);
+        }
+      }
+      updateConfetti();
+    }
+
+    btnAccept.addEventListener('click', () => {
+      playCelebrateFanfare();
+      launchConfetti();
+      confirmNotice.classList.remove('hidden');
+      confirmNotice.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Volver Button returns back cleanly to Scene 1
+    document.getElementById('btnBack').addEventListener('click', () => {
+      sceneInvite.classList.add('hidden');
+      sceneInvite.classList.remove('flex');
+
+      kittenContainer.classList.remove('noodle-anim');
+      sceneKittens.classList.remove('hidden');
+      sceneKittens.style.opacity = '1';
+
+      // Reset sequence states
+      document.getElementById('rowCakeHappy').classList.add('hidden');
+      document.getElementById('lineHappy').textContent = '';
+      document.getElementById('rowLugar').classList.add('hidden');
+      document.getElementById('lineLugar').textContent = '';
+      document.getElementById('parkContainer').classList.add('hidden');
+      document.getElementById('rowDireccion').classList.add('hidden');
+      document.getElementById('lineDireccion').textContent = '';
+      document.getElementById('rowHora').classList.add('hidden');
+      document.getElementById('lineHora').textContent = '';
+      document.getElementById('finalActions').classList.add('hidden');
+      confirmNotice.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
